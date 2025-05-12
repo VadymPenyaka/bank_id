@@ -1,4 +1,4 @@
-package peniaka.bankid.generator;
+package peniaka.bankid.util;
 
 import org.springframework.stereotype.Service;
 import peniaka.bankid.model.PassportDTO;
@@ -6,7 +6,6 @@ import peniaka.bankid.model.PassportDTO;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Random;
-import java.util.UUID;
 
 @Service
 public class PassportGenerator {
@@ -15,7 +14,6 @@ public class PassportGenerator {
 
     public PassportDTO generateRandomPassportDTO() {
         PassportDTO dto = new PassportDTO();
-        dto.setId(UUID.randomUUID());
         dto.setDateOfBirth(generateValidBirthDate());
         dto.setDocumentNumber(generatePassportNumber());
         dto.setIssuedBy(generateAuthorityCode());
@@ -25,9 +23,9 @@ public class PassportGenerator {
     }
 
     private LocalDate generateValidBirthDate() {
-        int age = 18 + random.nextInt(50); // від 18 до 68 років
+        int age = 21 + random.nextInt(47);
         return LocalDate.now().minusYears(age)
-                .minusDays(random.nextInt(365)); // ще мінус кілька днів для варіативності
+                .minusDays(random.nextInt(365));
     }
 
     private String generatePassportNumber() {
@@ -51,7 +49,6 @@ public class PassportGenerator {
         for (int i = 0; i < 9; i++) {
             tin.append(random.nextInt(10));
         }
-        // контрольна цифра (умовна, без реального алгоритму)
         tin.append(random.nextInt(10));
         return tin.toString();
     }

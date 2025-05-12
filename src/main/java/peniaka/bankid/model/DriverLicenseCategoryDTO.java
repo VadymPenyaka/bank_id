@@ -5,14 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
+import java.time.LocalDate;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class PersonalDataDto {
-    private UUID id;
-    private PassportDTO passport;
-    private DriverLicenseDTO driverLicense;
+public class DriverLicenseCategoryDTO {
+    private String category;
+    private LocalDate issueDate;
 }

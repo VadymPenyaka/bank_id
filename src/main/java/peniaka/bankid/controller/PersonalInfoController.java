@@ -4,11 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import peniaka.bankid.generator.DriverLicenseGenerator;
-import peniaka.bankid.generator.PassportGenerator;
-import peniaka.bankid.model.PersonalDataDto;
+import peniaka.bankid.util.DriverLicenseGenerator;
+import peniaka.bankid.util.PassportGenerator;
 import peniaka.bankid.model.DriverLicenseDTO;
 import peniaka.bankid.model.PassportDTO;
+import peniaka.bankid.model.PersonalDataDto;
 
 @RestController
 @RequestMapping(PersonalInfoController.BASE_PATH)

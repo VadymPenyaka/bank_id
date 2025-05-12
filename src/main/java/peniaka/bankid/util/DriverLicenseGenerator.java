@@ -1,6 +1,7 @@
-package peniaka.bankid.generator;
+package peniaka.bankid.util;
 
 import org.springframework.stereotype.Service;
+import peniaka.bankid.model.DriverLicenseCategoryDTO;
 import peniaka.bankid.model.DriverLicenseDTO;
 
 import java.time.LocalDate;
@@ -10,12 +11,18 @@ import java.util.*;
 public class DriverLicenseGenerator {
 
     private final Random random = new Random();
-    private final Set<String> ALL_CATEGORIES = Set.of("A", "B", "C", "A1", "B1", "C1");
+    private final Set<DriverLicenseCategoryDTO> ALL_CATEGORIES = Set
+            .of(new DriverLicenseCategoryDTO("A", LocalDate.now().minusYears(2)),
+                    new DriverLicenseCategoryDTO("B", LocalDate.now().minusYears(2)),
+                    new DriverLicenseCategoryDTO("C", LocalDate.now().minusYears(2)),
+                    new DriverLicenseCategoryDTO("A1", LocalDate.now().minusYears(2)),
+                    new DriverLicenseCategoryDTO("B1", LocalDate.now().minusYears(2)),
+                    new DriverLicenseCategoryDTO("C1", LocalDate.now().minusYears(2)));
 
     public DriverLicenseDTO generateRandomDriverLicenseDTO() {
+
         DriverLicenseDTO dto = new DriverLicenseDTO();
-        dto.setId(UUID.randomUUID());
-        dto.setCategory(ALL_CATEGORIES);
+        dto.setCategories(ALL_CATEGORIES);
         dto.setIssueDate(generateIssueDate());
         dto.setExpirationDate(generateExpirationDate(dto.getIssueDate()));
         dto.setIssuedBy(generateAuthorityCode());
@@ -29,7 +36,6 @@ public class DriverLicenseGenerator {
     }
 
     private LocalDate generateExpirationDate(LocalDate issueDate) {
-        // Видаються терміном на 10 років
         return issueDate.plusYears(10).minusDays(random.nextInt(365));
     }
 
