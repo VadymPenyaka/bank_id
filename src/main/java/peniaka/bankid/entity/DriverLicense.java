@@ -27,6 +27,9 @@ public class DriverLicense {
     private UUID id;
 
     @Column(nullable = false)
+    private String fullName;
+
+    @Column(nullable = false)
     private LocalDate issueDate;
 
     @Column(nullable = false)

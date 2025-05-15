@@ -6,7 +6,7 @@ import peniaka.bankid.model.DriverLicenseDTO;
 
 @Mapper
 public interface DriverLicenseMapper {
-    DriverLicense toDto(DriverLicenseDTO driverLicensesDTO);
+    DriverLicenseDTO toDto(DriverLicense entity);
 
-    DriverLicenseDTO toEntity(DriverLicense entity);
+    DriverLicense toEntity(DriverLicenseDTO driverLicensesDTO);
 }

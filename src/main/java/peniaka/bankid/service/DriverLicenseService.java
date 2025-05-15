@@ -18,8 +18,8 @@ public class DriverLicenseService {
     private final DriverLicenseRepository driverLicensesRepository;
     private final DriverLicenseCategoryRepository licenseCategoryRepository;
 
-    public DriverLicenseDTO createDriverLicense(DriverLicenseDTO driverLicensesDTO) {
-        DriverLicense license = driverLicenseMapper.toDto(driverLicensesDTO);
+    public void createDriverLicense(DriverLicenseDTO driverLicensesDTO) {
+        DriverLicense license = driverLicenseMapper.toEntity(driverLicensesDTO);
         DriverLicense saved = driverLicensesRepository
                 .save(license);
         Set<DriverLicenseCategory> categories = license.getCategories();
@@ -29,13 +29,13 @@ public class DriverLicenseService {
 
         licenseCategoryRepository.saveAll(categories);
 
-        return driverLicenseMapper
-                .toEntity(driverLicensesRepository.save(saved));
+        driverLicenseMapper
+                .toDto(driverLicensesRepository.save(saved));
     }
 
     public Optional<DriverLicenseDTO> getDriverLicenseById(UUID id) {
         return Optional.ofNullable(driverLicenseMapper
-                .toEntity(driverLicensesRepository
+                .toDto(driverLicensesRepository
                         .findById(id).orElse(null)));
     }
 
