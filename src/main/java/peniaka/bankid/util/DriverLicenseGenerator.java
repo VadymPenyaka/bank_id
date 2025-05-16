@@ -22,7 +22,6 @@ public class DriverLicenseGenerator {
     public DriverLicenseDTO generateRandomDriverLicenseDTO() {
 
         DriverLicenseDTO dto = new DriverLicenseDTO();
-        dto.setCategories(ALL_CATEGORIES);
         dto.setIssueDate(generateIssueDate());
         dto.setExpirationDate(generateExpirationDate(dto.getIssueDate()));
         dto.setIssuedBy(generateAuthorityCode());

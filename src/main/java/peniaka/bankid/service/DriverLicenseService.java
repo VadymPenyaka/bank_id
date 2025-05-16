@@ -8,6 +8,7 @@ import peniaka.bankid.model.DriverLicenseDTO;
 import peniaka.bankid.repository.DriverLicenseCategoryRepository;
 import peniaka.bankid.repository.DriverLicenseRepository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -33,10 +34,13 @@ public class DriverLicenseService {
                 .toDto(driverLicensesRepository.save(saved));
     }
 
+//    TODO delete method create only necessary method
     public Optional<DriverLicenseDTO> getDriverLicenseById(UUID id) {
-        return Optional.ofNullable(driverLicenseMapper
-                .toDto(driverLicensesRepository
-                        .findById(id).orElse(null)));
+//        return Optional.ofNullable(driverLicenseMapper
+//                .toDto(driverLicensesRepository
+//                        .findById(id).orElse(null)));
+
+        return Optional.of(DriverLicenseDTO.builder().id(UUID.randomUUID()).expirationDate(LocalDate.now().plusYears(2)).issueDate(LocalDate.now().minusYears(1)).build());
     }
 
     public Optional<DriverLicenseDTO> getDtoFromImage(String url) {

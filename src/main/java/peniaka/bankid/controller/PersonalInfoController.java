@@ -31,7 +31,7 @@ public class PersonalInfoController {
     public ResponseEntity<?> createPersonalRandomInfo() {
         PassportDTO passport = passportGenerator.generateRandomPassportDTO();
         DriverLicenseDTO license = driverLicenseGenerator.generateRandomDriverLicenseDTO();
-
+        System.out.println(license);
         passportService.createPassport(passport);
         driverLicenseService.createDriverLicense(license);
 

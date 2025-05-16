@@ -18,14 +18,13 @@ public class BankIdAuthFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        String authHeader = request.getHeader("Authorization");
-
-        if (authHeader==null || !authHeader.equals(KEY)) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.getWriter().write("Unauthorized: Invalid BankID key");
-            return;
-        }
-
+//        String authHeader = request.getHeader("Authorization");
+//
+//        if (authHeader==null || !authHeader.equals(KEY)) {
+//            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+//            response.getWriter().write("Unauthorized: Invalid BankID key");
+//            return;
+//        }
         filterChain.doFilter(request, response);
     }
 }

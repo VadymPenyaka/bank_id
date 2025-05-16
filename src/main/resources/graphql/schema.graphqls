@@ -1,0 +1,25 @@
+scalar Local
+scalar UUID
+
+type DriverLicense {
+    id: UUID!
+    expirationDate: Local!
+    issueDate: Local!
+    issuedBy: String
+    documentNumber: String,
+    category: [DriverLicenseCategory]
+}
+
+type  DriverLicenseCategory {
+    category: String
+    issueDate: Local
+}
+
+type Query {
+    driverLicense(id: UUID!): DriverLicense
+}
+
+schema {
+    query: Query
+#    mutation: Mutation
+}
