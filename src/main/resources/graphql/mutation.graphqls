@@ -1,0 +1,32 @@
+input DriverLicenseCategoryInput {
+    category: String!
+    issueDate: Local!
+}
+
+input DriverLicenseInput {
+    id: UUID!
+    expirationDate: Local!
+    issueDate: Local!
+    issuedBy: String!
+    documentNumber: String!
+    category: [DriverLicenseCategoryInput!]!
+}
+
+input PassportInput {
+    id: UUID!
+    dateOfBirth: Local!
+    documentNumber: String!
+    issuedBy: String!
+    expirationDate: Local!
+    taxIdentificationNumber: String!
+}
+
+input PersonInput {
+    id: UUID!
+    driverLicense: DriverLicenseInput!
+    passport: PassportInput!
+}
+
+type Mutation {
+    createPerson(person: PersonInput!): Person!
+}

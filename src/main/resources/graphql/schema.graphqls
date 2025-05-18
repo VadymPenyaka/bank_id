@@ -3,8 +3,8 @@ scalar UUID
 
 type DriverLicense {
     id: UUID!
-    expirationDate: Local!
-    issueDate: Local!
+    expirationDate: Local
+    issueDate: Local
     issuedBy: String
     documentNumber: String,
     category: [DriverLicenseCategory]
@@ -19,7 +19,23 @@ type Query {
     driverLicense(id: UUID!): DriverLicense
 }
 
+type Passport {
+    id: UUID!,
+    dateOfBirth: Local,
+    documentNumber: String,
+    issuedBy: String,
+    expirationDate: Local!,
+    taxIdentificationNumber: String,
+}
+
+type Person {
+    id: UUID!,
+    driverLicense: DriverLicense,
+    passport: Passport
+}
+
 schema {
     query: Query
-#    mutation: Mutation
 }
+
+
