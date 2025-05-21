@@ -6,12 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class DriverLicenseCategoryDTO {
-    private String category;
+    private UUID id;
+//    private DriverLicenseDTO license;
+    private LicenseCategory category;
     private LocalDate issueDate;
 }

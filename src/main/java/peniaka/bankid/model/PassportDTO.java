@@ -14,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PassportDTO {
     private UUID id;
+    private String fullName;
     private LocalDate dateOfBirth;
     private String documentNumber;
     private String issuedBy;

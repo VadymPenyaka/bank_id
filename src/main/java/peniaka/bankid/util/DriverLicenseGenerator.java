@@ -12,12 +12,7 @@ public class DriverLicenseGenerator {
 
     private final Random random = new Random();
     private final Set<DriverLicenseCategoryDTO> ALL_CATEGORIES = Set
-            .of(new DriverLicenseCategoryDTO("A", LocalDate.now().minusYears(2)),
-                    new DriverLicenseCategoryDTO("B", LocalDate.now().minusYears(2)),
-                    new DriverLicenseCategoryDTO("C", LocalDate.now().minusYears(2)),
-                    new DriverLicenseCategoryDTO("A1", LocalDate.now().minusYears(2)),
-                    new DriverLicenseCategoryDTO("B1", LocalDate.now().minusYears(2)),
-                    new DriverLicenseCategoryDTO("C1", LocalDate.now().minusYears(2)));
+            .of();
 
     public DriverLicenseDTO generateRandomDriverLicenseDTO() {
 

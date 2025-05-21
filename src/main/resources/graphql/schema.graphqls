@@ -7,17 +7,15 @@ type DriverLicense {
     issueDate: Local
     issuedBy: String
     documentNumber: String,
-    category: [DriverLicenseCategory]
+    categories: [DriverLicenseCategory!]!
 }
 
 type  DriverLicenseCategory {
-    category: String
+    category: LicenseCategory
     issueDate: Local
 }
 
-type Query {
-    driverLicense(id: UUID!): DriverLicense
-}
+
 
 type Passport {
     id: UUID!,
@@ -34,8 +32,65 @@ type Person {
     passport: Passport
 }
 
+
+
+enum LicenseCategory {
+    A
+    A1
+    B
+    B1
+    C
+    C1
+    D
+    D1
+    BE
+    C1E
+    CE
+    D1E
+    DE
+}
+
+input DriverLicenseCategoryInput {
+    category: LicenseCategory!
+    issueDate: Local!
+}
+
+input DriverLicenseInput {
+    id: UUID
+    expirationDate: Local!
+    issueDate: Local!
+    issuedBy: String!
+    documentNumber: String!
+    categories: [DriverLicenseCategoryInput!]!
+}
+
+input PassportInput {
+    id: UUID
+    fullName: String!
+    dateOfBirth: Local!
+    documentNumber: String!
+    issuedBy: String!
+    expirationDate: Local!
+    taxIdentificationNumber: String!
+}
+
+input PersonInput {
+    id: UUID!
+    driverLicense: DriverLicenseInput!
+    passport: PassportInput!
+}
+
+type Mutation {
+    createPerson(person: PersonInput!): Person!
+}
+
+type Query {
+    driverLicense(id: UUID!): DriverLicense
+}
+
 schema {
     query: Query
+    mutation: Mutation
 }
 
 

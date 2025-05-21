@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -19,5 +20,5 @@ public class DriverLicenseDTO {
     private LocalDate expirationDate;
     private String issuedBy;
     private String documentNumber;
-    private Set<DriverLicenseCategoryDTO> category;
+    private Set<DriverLicenseCategoryDTO> categories = new HashSet<>();
 }

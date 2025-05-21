@@ -21,11 +21,11 @@ public class Person {
     @Column(updatable = false, nullable = false, unique = true)
     private UUID id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private DriverLicense driverLicense;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(nullable = false)
     private Passport passport;
 }

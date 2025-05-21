@@ -25,6 +25,9 @@ public class Passport {
     private UUID id;
 
     @Column(nullable = false)
+    private String fullName;
+
+    @Column(nullable = false)
     private LocalDate dateOfBirth;
 
     @Column(nullable = false, unique = true)
