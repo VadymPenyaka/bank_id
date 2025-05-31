@@ -15,15 +15,22 @@ public class PersonService {
     private final PersonRepository personRepository;
     private final PersonMapper personMapper;
     private final DriverLicenseService driverLicenseService;
+    private final PersonDataGeneratorService personGenerationService;
 
     public Optional<PersonDTO> getPersonById (UUID id) {
+        System.out.println("\n\n"+id.toString()+"\n\n");
         return Optional.ofNullable(personMapper.toDto(personRepository
                 .findById(id).orElse(null)));
     }
 
-    public PersonDTO createPerson(PersonDTO person) {
+    public void createPerson(PersonDTO person) {
         person.setDriverLicense(driverLicenseService.createDriverLicense(person.getDriverLicense()));
-        return personMapper.toDto(personRepository
+        personMapper.toDto(personRepository
                 .save(personMapper.toEntity(person)));
+    }
+
+    public void createPersonFromRandomData (UUID personId) {
+        PersonDTO personDTO = personGenerationService.generatePerson(personId);
+        createPerson(personDTO);
     }
 }

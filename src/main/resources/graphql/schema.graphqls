@@ -19,6 +19,7 @@ type  DriverLicenseCategory {
 
 type Passport {
     id: UUID!,
+    fullName: String,
     dateOfBirth: Local,
     documentNumber: String,
     issuedBy: String,
@@ -85,7 +86,7 @@ type Mutation {
 }
 
 type Query {
-    driverLicense(id: UUID!): DriverLicense
+    person(id: UUID!): Person
 }
 
 schema {
